@@ -1,0 +1,10 @@
+{
+  "id": "workflow-boards",
+  "name": "Workflow Boards",
+  "version": "0.1.0",
+  "minAppVersion": "1.14.4",
+  "description": "Track linked-note workflows, recurring tasks and CRM pipelines with configurable folders, properties and dashboards.",
+  "author": "jeansordes",
+  "authorUrl": "https://github.com/jeansordes",
+  "isDesktopOnly": false
+}

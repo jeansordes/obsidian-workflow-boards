@@ -1,0 +1,16 @@
+{
+  "name": "workflow-boards",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Configurable linked-note workflows and dashboards for Obsidian.",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --external:obsidian --platform=browser --format=cjs --target=es2018 --outfile=main.js",
+    "test": "node --test tests/*.test.cjs",
+    "check": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "yaml": "2.9.1"
+  }
+}

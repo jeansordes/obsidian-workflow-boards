@@ -1,0 +1,22 @@
+/* Native Obsidian tokens keep the view readable in light and dark themes. */
+.wb-dashboard { --wb-gap: 12px; }
+.wb-summary { display: flex; flex-wrap: wrap; gap: 20px; padding: 16px 0; border-block: 1px solid var(--background-modifier-border); }
+.wb-summary > div { display: flex; align-items: baseline; gap: 6px; }
+.wb-summary strong { font-size: 1.7em; font-variant-numeric: tabular-nums; }
+.wb-summary span, .wb-dashboard .wb-caption { color: var(--text-muted); font-size: .9em; }
+.wb-dashboard input.wb-search { width: 100%; margin: 8px 0 16px; min-height: 40px; }
+.wb-task { border-bottom: 1px solid var(--background-modifier-border); padding: 16px 0; overflow-wrap: anywhere; }
+.wb-task-heading { display: flex; align-items: start; justify-content: space-between; gap: var(--wb-gap); }
+.wb-task-heading > a { font-weight: 600; line-height: 1.4; }
+.wb-task-heading button { flex: 0 0 auto; min-height: 36px; }
+.wb-task p { margin: 8px 0; }
+.wb-task .wb-action { font-size: 1.05em; line-height: 1.55; color: var(--text-normal); }
+.wb-stages { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .9em; }
+.wb-dashboard h3 { margin-top: 24px; }
+.wb-dashboard details { margin-top: 24px; }
+.wb-dashboard a:focus-visible, .wb-dashboard button:focus-visible, .wb-dashboard input:focus-visible { outline: 2px solid var(--interactive-accent); outline-offset: 3px; }
+@media (max-width: 520px) {
+ .wb-summary { gap: 10px 16px; }
+ .wb-summary > div { flex-basis: calc(50% - 16px); }
+ .wb-task-heading { flex-wrap: wrap; }
+}

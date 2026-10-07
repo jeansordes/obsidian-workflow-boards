@@ -1,0 +1,4 @@
+---
+type: person
+---
+# Example person
