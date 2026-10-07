@@ -1,6 +1,6 @@
 {
   "name": "workflow-boards",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Configurable linked-note workflows and dashboards for Obsidian.",
   "license": "MIT",

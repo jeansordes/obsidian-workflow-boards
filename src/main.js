@@ -199,7 +199,7 @@ class Workflows extends Plugin {
   const people=[];for(const person of this.app.vault.getMarkdownFiles()){if(person.path.startsWith(root+this.folder('people')) && this.fm(await this.app.vault.cachedRead(person)).type===this.settings.types.person)people.push(person.path.slice(root.length).replace(/\.md$/,''));}
   const data={responsable:clean(fm.responsable),prochaine_action:fm.prochaine_action||nextAction(await this.app.vault.read(file)),priorite:fm.priorite||'',echeance:dateValue(fm.echeance),blocage:fm.blocage||'',attente_de:fm.attente_de||'',focus:fm.focus===true};
   new Form(this.app,'Organiser '+fm.id,form=>{
-   const field=(label,tag,value,attrs={})=>{const l=form.createEl('label',{text:label});l.style.display='block';const input=l.createEl(tag,{attr:attrs});input.value=value;input.style.width='100%';return input;};
+   const field=(label,tag,value,attrs={})=>{const l=form.createEl('label',{text:label,cls:'wb-field'});const input=l.createEl(tag,{attr:attrs});input.value=value;return input;};
    const owner=field('Responsable du prochain résultat','select','');owner.createEl('option',{text:'À attribuer',attr:{value:''}});
    const current=data.responsable;for(const name of people){const value=name;owner.createEl('option',{text:name.split('/').pop(),attr:{value}});}if(current&&!people.some(n=>current===n))owner.createEl('option',{text:current,attr:{value:current}});owner.value=current;owner.onchange=()=>data.responsable=owner.value;
    const action=field('Prochaine action concrète','textarea',data.prochaine_action,{required:true,rows:'3'});action.oninput=()=>data.prochaine_action=action.value;
@@ -225,7 +225,7 @@ class Workflows extends Plugin {
   }).open();
  }
  renderDashboard(el,source,sourcePath,state){
-  el.empty();el.addClass('workflow-dashboard');
+  el.empty();el.addClass('wb-dashboard');
   const opts=frontmatter('---\n'+source+'\n---');
   const target=opts.personne?this.resolve(opts.personne,sourcePath,state.root):'';
   let rows=state.tickets;

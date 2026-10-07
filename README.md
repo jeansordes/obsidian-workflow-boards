@@ -2,7 +2,7 @@
 
 Configurable linked-note workflows, recurring tasks, personal dashboards and CRM pipelines for Obsidian. Notes and Markdown Kanban boards remain the source of truth.
 
-**Status: 0.1.0 preview. Not yet listed in Obsidian Community.** Automated tests cover the workflow engine and configurable schemas. Desktop visual testing, mobile testing and Community review are still pending. The interface is currently French; settings and default property names are English.
+**Status: 0.1.1 initial release. [Community listing](https://community.obsidian.md/plugins/workflow-boards) submitted; installability awaits automated review.** Automated tests cover the workflow engine and configurable schemas. Desktop visual testing, mobile testing and Community review are still pending. The interface is currently French; settings and default property names are English.
 
 ## Features
 

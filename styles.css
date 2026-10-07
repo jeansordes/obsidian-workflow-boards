@@ -20,3 +20,6 @@
  .wb-summary > div { flex-basis: calc(50% - 16px); }
  .wb-task-heading { flex-wrap: wrap; }
 }
+
+.wb-field { display: block; margin-block: 8px; }
+.wb-field > input, .wb-field > select, .wb-field > textarea { width: 100%; }
