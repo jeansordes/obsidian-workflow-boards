@@ -81,3 +81,30 @@ test('creation rejects out-of-scope boards and duplicates without writing',async
  const before=data.size;await assert.rejects(()=>plugin.createTicket({title:'Bad',project:'Projects/A.md',workflows:['Boards/A.md','Boards/A.md']},''));
  await assert.rejects(()=>plugin.createTicket({title:'Bad',project:'Projects/A.md',workflows:['Elsewhere/A.md']},''));assert.equal(data.size,before);
 });
+
+class Element {
+ constructor(tag='div',opts={}){this.tag=tag;this.opts=opts;this.children=[];this.value='';this.classes=new Set();this.classList={add:v=>this.classes.add(v)};}
+ createEl(tag,opts={}){const child=new Element(tag,opts);this.children.push(child);return child;}
+ createDiv(opts={}){return this.createEl('div',opts);}
+ empty(){this.children=[];}
+ addClass(value){this.classes.add(value);}
+ setText(value){this.opts.text=value;}
+ text(){return [this.opts.text||'',...this.children.map(c=>c.text())].join(' ');}
+ all(tag){return [...(this.tag===tag?[this]:[]),...this.children.flatMap(c=>c.all(tag))];}
+}
+test('dashboard renders personal filters, search, completed tasks and matching CSS scope',()=>{
+ const {plugin}=fixture();
+ const task=(id,owner,status='Ouvert')=>({file:{path:`Tasks/${id}.md`,basename:id},fm:{id,responsable:owner},action:`Action ${id}`,result:{status,stages:[],errors:[]}});
+ const rows=[task('A','[[People/Alex]]'),task('B','[[People/Sam]]'),task('C','[[People/Alex]]','Terminé'),task('D','')];
+ const el=new Element();plugin.renderDashboard(el,'personne: "[[People/Alex]]"','Dashboard.md',{root:'',tickets:rows});
+ assert(el.classes.has('wb-dashboard'));assert.equal(el.all('button').length,1);assert.equal(el.all('details').length,1);assert(!el.text().includes('Action B'));
+ const search=el.all('input')[0];search.value='no match';search.oninput();assert.equal(el.all('button').length,0);assert(el.text().includes('Aucun ticket ne correspond'));
+ const unassigned=new Element();plugin.renderDashboard(unassigned,'scope: sans_responsable','Dashboard.md',{root:'',tickets:rows});assert.equal(unassigned.all('button').length,1);assert(unassigned.text().includes('Action D'));
+ const css=fs.readFileSync(require.resolve('../styles.css'),'utf8');assert(css.includes('.wb-dashboard'));
+});
+test('CRM totals exclude foreign-currency amounts and preserve readable output',()=>{
+ const {plugin}=fixture({currency:'USD'});const el=new Element();
+ const deal=(currency,amount)=>({file:{path:`Deals/${currency}.md`,basename:currency},campaign:'Campaigns/A.md',fm:{devise:currency,montant:amount},status:'Ouvert',errors:[],due:false,date:''});
+ plugin.renderCRM(el,'scope: tous','Dashboard.md',{dossiers:[deal('USD',100),deal('EUR',200)],warnings:[]});
+ assert(el.text().includes('100 USD'));assert(el.text().includes('1 montants exclus'));assert.equal(el.all('tr').length,3);
+});
