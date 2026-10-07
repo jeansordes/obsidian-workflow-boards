@@ -2,7 +2,7 @@
 
 Configurable linked-note workflows, recurring tasks, personal dashboards and CRM pipelines for Obsidian. Notes and Markdown Kanban boards remain the source of truth.
 
-**Status: 0.1.1 initial release. [Community listing](https://community.obsidian.md/plugins/workflow-boards) submitted; installability awaits automated review.** Automated tests cover the workflow engine and configurable schemas. Desktop visual testing, mobile testing and Community review are still pending. The interface is currently French; settings and default property names are English.
+**Status: 0.1.1 initial release. [Community listing](https://community.obsidian.md/plugins/workflow-boards) published with automated review passed.** Automated tests cover the workflow engine and configurable schemas. Manual desktop visual testing and mobile testing are still pending. The interface is currently French; settings and default property names are English.
 
 ## Features
 
@@ -16,14 +16,18 @@ Configurable linked-note workflows, recurring tasks, personal dashboards and CRM
 
 There are no hard-coded team members or vault paths. Owners come from person notes in your configured directory. No network calls, telemetry or external services are used. The Kanban community plugin is optional for dragging cards visually; Workflow Boards reads the Markdown board format directly.
 
-## Install the preview
+## Install from Community
+
+Open Settings → Community plugins → Browse, search for **Workflow Boards**, then install and enable it. You can also use **Add to Obsidian** on the [Community listing](https://community.obsidian.md/plugins/workflow-boards). Configure the plugin settings for your vault before using its commands.
+
+## Manual installation
 
 1. Download `main.js`, `manifest.json` and `styles.css` from the [latest release](https://github.com/jeansordes/obsidian-workflow-boards/releases).
 2. Create `.obsidian/plugins/workflow-boards/` inside your vault and copy those three files into it.
 3. Reload Obsidian and enable **Workflow Boards** under Community plugins.
 4. Open its settings and configure folders and properties, then press **Save settings**.
 
-Requires Obsidian 1.14.4 or later for this preview. Mobile-compatible APIs are used, but mobile operation has not been manually verified. Once the plugin is accepted into the Community directory, installation and updates can use Obsidian's normal plugin manager.
+Requires Obsidian 1.14.4 or later for this preview. Mobile-compatible APIs are used, but mobile operation has not been manually verified. Installation and updates are available through Obsidian's normal plugin manager.
 
 ## Quick start
 

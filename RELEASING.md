@@ -13,6 +13,7 @@ Official instructions: https://docs.obsidian.md/Plugins/Releasing/Submit%20your%
 - Automated engine, schema, creation and CRM tests: passed.
 - Build and dependency audit: passed.
 - Manual Obsidian desktop and mobile validation: pending.
-- Community listing submitted and published; automated release review pending.
+- Community listing published; automated review of 0.1.1 passed, including byte-for-byte build verification.
+- Non-blocking recommendations: artifact attestations and vault file enumeration. Artifact attestation workflow changes require owner approval for additional GitHub Actions permissions.
 
 Future support requires someone to review issues, test Obsidian compatibility and publish fixes; a repository and CI do not themselves provide ongoing maintenance.
